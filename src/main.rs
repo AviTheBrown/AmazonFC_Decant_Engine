@@ -1,4 +1,5 @@
-mod models;
+pub mod models;
+
 use models::{Container,Get};
 fn main() {
     let new_box = Container{

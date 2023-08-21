@@ -12,18 +12,18 @@ pub struct Tote<'a> {
     pub weight: u32,
     pub id: &'a str,
 }
-
-pub trait Get {
+pub trait MetaData{
     fn get(&self) -> &Self;
+    fn new(&self) -> &Self;
 }
 
-impl<'a> Get for Container<'a> {
+impl<'a> MetaData for Container<'a> {
     fn get(&self) -> &Self {
         self
     }
 }
 
-impl<'a> Get for Tote<'a> {
+impl<'a> MetaData for Tote<'a> {
     fn get(&self) -> &Self {
         self
     }
