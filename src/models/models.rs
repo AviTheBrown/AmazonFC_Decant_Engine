@@ -1,17 +1,33 @@
-pub mod models;
 
 
 #[derive(Debug, Clone)]
-pub struct Box {
-	weight: u32,
-	id: String,
+pub struct Box{
+	pub weight: u32,
+	pub id: String,
 }
 
 
 #[derive(Debug, Clone)]
 pub struct Tote {
-	number_of_itesm: u32,
-	total_weight: u32,
-	id: Strin,
+	pub number_of_itesm: u32,
+	pub total_weight: u32,
+	pub id: String,
 }
 
+pub trait PullData {
+	fn pull_data(&self) -> &Self {
+		self
+	}
+}
+
+impl PullData for Box {
+	fn pull_data(&self) -> &Self{
+		self
+	}
+}
+
+impl PullData for Tote{
+	fn pull_data(&self) -> &Self{
+		self
+	}
+}
