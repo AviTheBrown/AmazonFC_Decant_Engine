@@ -1,33 +1,45 @@
+use std::fmt;
 
-
-#[derive(Debug, Clone)]
-pub struct Box{
-	pub weight: u32,
-	pub id: String,
+#[derive(Clone)]
+pub struct Container<'a> {
+    pub weight: u32,
+    pub id: &'a str,
 }
 
-
-#[derive(Debug, Clone)]
-pub struct Tote {
-	pub number_of_itesm: u32,
-	pub total_weight: u32,
-	pub id: String,
+#[derive(Clone)]
+pub struct Tote<'a> {
+    pub number_of_items: u32,
+    pub weight: u32,
+    pub id: &'a str,
 }
 
-pub trait PullData {
-	fn pull_data(&self) -> &Self {
-		self
-	}
+pub trait Get {
+    fn get(&self) -> &Self;
 }
 
-impl PullData for Box {
-	fn pull_data(&self) -> &Self{
-		self
-	}
+impl<'a> Get for Container<'a> {
+    fn get(&self) -> &Self {
+        self
+    }
 }
 
-impl PullData for Tote{
-	fn pull_data(&self) -> &Self{
-		self
-	}
+impl<'a> Get for Tote<'a> {
+    fn get(&self) -> &Self {
+        self
+    }
+}
+
+impl<'a> fmt::Display for Container<'a> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(f, "Container test {{weigth: {}, ID: {} }}", self.weight, self.id)
+    }
+}
+impl<'a> fmt::Display for Tote<'a> {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
+        write!(
+            f,
+            "Tote: {{Number of items currently: {}, Weight: {}, ID: {} }}",
+            self.weight, self.number_of_items, self.id
+        )
+    }
 }

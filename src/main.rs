@@ -1,11 +1,9 @@
 mod models;
-use models::Box;
-use models::PullData;
-
+use models::{Container,Get};
 fn main() {
-    let new_box = Box {
+    let new_box = Container{
         weight: 20,
-        id: "dfjldsnfl".to_string(),
+        id: "dfjldsnfl",
     };
-    new_box.pull_data();
+    println!("{}", new_box);
 }
