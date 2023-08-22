@@ -1,3 +1,3 @@
 pub mod models;
 
-pub use models::{Container, Get, Tote};
+pub use models::{Container, MetaData, Tote};

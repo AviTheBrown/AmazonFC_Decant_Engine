@@ -1,10 +1,7 @@
 pub mod models;
 
-use models::{Container,Get};
+use models::{Container,MetaData, Tote};
 fn main() {
-    let new_box = Container{
-        weight: 20,
-        id: "dfjldsnfl",
-    };
-    println!("{}", new_box);
+    let new_container = Tote::new();
+    println!("{}", new_container.unwrap());
 }
