@@ -35,7 +35,7 @@ pub trait MetaData {
         Self: Sized;
 }
 
-impl<'a> MetaData for Container<'a> {
+impl MetaData for Container {
     fn get(&self) -> &Self {
         self
     }
@@ -43,18 +43,13 @@ impl<'a> MetaData for Container<'a> {
         self
 }
 
-impl<'a> MetaData for Tote<'a> {
+impl MetaData for Tote {
     fn get(&self) -> &Self {
         self
     }
     fn new() -> Result<Self, NonImplOnTypeErr> {
-        let id_generator = "";
-        Container {
-            number_of_items: 0,
-            weight: 0,
-            id: ""
-        }
-        Err
+            let id = Rc::new(RefCell::new(String::from(id_generator() )));
+            Ok(Tote {number_of_items: 0, weight: 0, id })
     }
 }
 
@@ -62,6 +57,12 @@ impl<'a> Tote<'a> {
     fn update_tote(&self) -> Result<&Self, ToteError> {
         
     }
+    fn id_generator() -> String {
+            let mut id = String::new();
+            let lowercase_alphabet: Vec<char> = ('a'..='z').collect();
+            let uppercase_alphabet: Vec<char> = ('A'..='Z').collect();
+            let numbers: Vec<u8> = (1..=9).collect();
+        }
 }
 
 impl<'a> fmt::Display for Container<'a> {

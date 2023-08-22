@@ -1,7 +1,11 @@
 pub mod models;
 
-use models::{Container,MetaData, Tote};
+use models::{Container, MetaData, Tote};
 fn main() {
-    let new_container = Tote::new();
-    println!("{}", new_container.unwrap());
+    let mut new_container = Tote::new().unwrap();
+    // new_container.weight = 30;
+    println!("{}", new_container);
+
+    new_container.id = "fdkljfnkdsf9fns9";
+    println!("{}", new_container)
 }
